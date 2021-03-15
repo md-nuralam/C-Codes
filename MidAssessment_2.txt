@@ -1,0 +1,164 @@
+using System;
+
+namespace MidAssessment_2
+{
+    class OpenAccount
+    {
+        private string name;
+        private string dateofBirth;
+        private string address;
+        private int accountNum;
+        private double balance;
+
+        public string Name
+        {
+            get { return name; }
+            set { name = value; }
+        }
+        public string DateofBirth
+        {
+            get { return dateofBirth; }
+            set { dateofBirth = value; }
+        }
+        public string Address
+        {
+            get { return address; }
+            set { address = value; }
+        }
+        public int AccountNum
+        {
+            get { return accountNum; }
+            set { accountNum = value; }
+        }
+        public double Balance
+        {
+            get { return balance; }
+            set { balance = value; }
+        }
+
+        public OpenAccount(string nm, string dob, string adrs, int acnm, int blnc)
+        {
+            Name = nm;
+            DateofBirth = dob;
+            Address = adrs;
+            AccountNum = acnm;
+            Balance = blnc;
+        }
+        public void CheckingAccount()
+        {
+            Console.WriteLine("===Checking Account===");
+            Console.WriteLine("Name:" + Name);
+            Console.WriteLine("Date of Birth:" + DateofBirth);
+            Console.WriteLine("Address:" + Address); ;
+            Console.WriteLine("Account Number:" + AccountNum);
+            Console.WriteLine("Balance:" + Balance);
+        }
+
+        public void SavingAccount()
+        {
+            Console.WriteLine("===Saving Account===");
+            Console.WriteLine("Name:" + Name);
+            Console.WriteLine("Date of Birth:" + DateofBirth);
+            Console.WriteLine("Address:" + Address); ;
+            Console.WriteLine("Account Number:" + AccountNum);
+            Console.WriteLine("Balance:" + Balance);
+        }
+
+    }
+
+    class Account
+    {
+        public double Balance = 5000;
+        public void Deposit()
+        {
+            Console.WriteLine("How much money do you want to deposit: ");
+            double i = Convert.ToDouble(Console.ReadLine());
+            double y = Balance + i;
+            Console.WriteLine("After Deposit New Balance:" + y);
+
+        }
+        public void Withdraw()
+        {
+            Console.WriteLine("How much money do you want to withdraw: ");
+            double i = Convert.ToDouble(Console.ReadLine());
+            double z = Balance - i;
+            Console.WriteLine("After Withdraw New Balance:" + z);
+        }
+        public void Transfer()
+        {
+            Console.WriteLine("For incomming Transfer press 1 & For outgoing transfer press 2");
+            int k = Convert.ToInt32(Console.ReadLine());
+            switch (k)
+            {
+                case 1:
+                    Console.WriteLine("Your incomming Balance:");
+                    double l = Convert.ToDouble(Console.ReadLine());
+                    double h = Balance + l;
+                    Console.WriteLine("After incomming balance New Balance:" + h);
+                    break;
+                case 2:
+                    Console.WriteLine("Your outgoing Balance:");
+                    double j = Convert.ToDouble(Console.ReadLine());
+                    double v = Balance + j;
+                    Console.WriteLine("After outgoing New Balance:" + v);
+                    break;
+
+            }
+        }
+        public void Show()
+        {
+            Console.WriteLine("Balance:" + Balance);
+
+        }
+    }
+
+    class Quit: Account
+    {
+        public void Quit1()
+        {
+            Console.WriteLine("Exit Application");
+        }
+    }
+
+    class Program
+    {
+        public static void Main(string[] args)
+        {
+
+            OpenAccount obj1 = new OpenAccount("Md. Nur Alam", "01/01/1997", "Dhaka", 12345, 50000);
+            Account obj2 = new Account();
+            Quit obj3 = new Quit();
+
+            Console.WriteLine("To Check Account 1\n" + "To Save Account 2\n" + "To Check deposit 3\n" + "To withdraw press 4\n" + "To transfer press 5\n" + "To show press 6\n" + "To quit press 7\n");
+
+            int n = Convert.ToInt32(Console.ReadLine());
+            switch (n)
+            {
+                case 1:
+                    obj1.CheckingAccount();
+                    break;
+                case 2:
+                    obj1.SavingAccount();
+                    break;
+                case 3:
+                    obj2.Deposit();
+                    break;
+                case 4:
+                    obj2.Withdraw();
+                    break;
+                case 5:
+                    obj2.Transfer();
+                    break;
+                case 6:
+                    obj2.Show();
+                    break;
+                case 7:
+                    obj3.Quit1();
+                    break;
+                default:
+                    Console.WriteLine("Invalid command.");
+                    break;
+            }
+        }
+    }
+}
